@@ -1,0 +1,63 @@
+<h1>Todos</h1>
+
+Filter:
+
+<input type="text" ng-model="filterName"/>
+
+<p/>
+
+<table border>
+  <thead>
+    <th><a href="" ng-click="changeSortOn('task')">Task</a> <img ng-src="{{signtask}}" width=10 height=10/></th>
+  	<th><a href="" ng-click="changeSortOn('start')">start</a> <img ng-src="{{signstart}}" width=10 height=10/></th>
+  	<th><a href="" ng-click="changeSortOn('due')">due</a> <img ng-src="{{signdue}}" width=10 height=10/></th>
+  	<th>remove</th>
+  </thead>
+  <tbody>
+    <tr ng-repeat="todo in todos | filter:{task:filterName} | orderBy:sortOn:reverse">
+  	  <td><a href="/#/todos/edit/{{todo.id}}">{{todo.task}}</a></td>
+  	  <td>{{todo.start | dateFormat:'YYYY-MM-DD HH:mm'}}</td>
+  	  <td>{{todo.due | dateFormat:'YYYY-MM-DD HH:mm'}}</td>
+  	  <td><a href="" ng-click="delete(todo.id)">remove</a></td>
+  	</tr>
+  </tbody>
+</table>
+
+<p/>
+
+<a href="" ng-click="noSort()">No sorting</a>
+
+<h1>Add Todo</h1>
+
+Task:
+<input type="text" ng-model="newTask.task" />
+Start:
+<input type="datetime-local" ng-model="newTask.start"/>
+Due:
+<input type="datetime-local" ng-model="newTask.due"/>
+
+<button ng-click="save()">Add</button>
+
+<h1>Search Todo</h1>
+
+<input type="text" ng-model="searchName" />
+<button ng-click="search()">Search</button>
+
+<p />
+
+<table border>
+	<thead>
+    <th>Task</th>
+    <th>start</th>
+    <th>due</th>
+    <th>remove</th>
+  </thead>
+	<tbody>
+		<tr ng-repeat="todo in foundTodos">
+			<td><a href="/#/todos/edit/{{todo.id}}">{{todo.task}}</a></td>
+		  <td>{{todo.start | dateFormat:'YYYY-MM-DD HH:mm'}}</td>
+		  <td>{{todo.due | dateFormat:'YYYY-MM-DD HH:mm'}}</td>
+		  <td><a href="" ng-click="delete(todo.id)">remove</a></td>
+		</tr>
+	</tbody>
+</table>

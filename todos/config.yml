@@ -1,0 +1,4 @@
+assets:
+  overrides:
+    /assets: client/dist/
+  cacheSpec: maximumSize=0

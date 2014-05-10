@@ -1,0 +1,16 @@
+
+
+<!-- <h1>{{todo.task}}</h1> -->
+<br />
+Task: <input type="text" ng-model="todo.task"/>
+Start: <input type="datetime-local" ng-model="todo.start" />
+Due: <input type="datetime-local" ng-model="todo.due" />
+<button ng-click="save()">Edit</button>
+
+<br />
+
+Differenz (Stunden): {{(todo.due-todo.start)/1000/60/60}}
+
+<p />
+<button onClick="history.back();">Back</button>
+
